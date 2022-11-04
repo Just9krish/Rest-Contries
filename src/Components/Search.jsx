@@ -3,7 +3,7 @@ import { faMagnifyingGlass, faChevronDown, } from "@fortawesome/free-solid-svg-i
 
 const Search = () => {
     return (
-        <form className='w-full max-w-sm mt-5'>
+        <form className='w-full max-w-sm'>
             <div className="relative min-h-[50px]">
                 <FontAwesomeIcon
                     icon={faMagnifyingGlass}
