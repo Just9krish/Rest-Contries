@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Country = ({ country }) => {
   // console.log(country)
   return (
-    <Link to="/country">
+    <Link to="/country" state={country}>
       <div className="bg-white text-very-dark-blue-t shadow-box rounded-md overflow-hidden transition-all ease-in dark:text-white dark:bg-dark-blue">
         <div className="block aspect-video">
           <img
