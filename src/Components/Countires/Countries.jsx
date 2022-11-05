@@ -20,7 +20,7 @@ const Countries = () => {
 
   return (
     <>
-      <div className="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {/* <div className="flex flex-wrap -mx-1 mt-11 lg:-mx-4"> */}
         {countries?.slice(0, next)?.map((country, index) => (
           <Country key={index} country={country} />
