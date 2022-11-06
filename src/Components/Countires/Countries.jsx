@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
 import Country from "./Country";
+import Loader from "../Loader";
 
 const Countries = () => {
   let loadCountries = 12;
@@ -12,16 +13,18 @@ const Countries = () => {
     isLoading,
   } = useFetch("https://restcountries.com/v3.1/all");
 
+  if (isLoading) return <Loader />;
+
+  if(error) return <div>{error}</div>
+
   function loadMore() {
-    console.log("load more");
     setNext(next + loadCountries);
   }
-  console.log("rendered");
 
   return (
     <>
       <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {/* <div className="flex flex-wrap -mx-1 mt-11 lg:-mx-4"> */}
+        {/* <div className="flex flex-wrap -mx-1 mt-11 lg:-mx-4"> */}
         {countries?.slice(0, next)?.map((country, index) => (
           <Country key={index} country={country} />
         ))}

@@ -28,7 +28,7 @@ const Details = () => {
 
   const currencyArr = Object.values(currencies);
   const currency = currencyArr.map((currency) => (
-    <span>
+    <span className="text-gray-500">
       {currency.name} ({currency.symbol}){currencyArr?.length > 1 ? ", " : null}
     </span>
   ));
@@ -37,8 +37,10 @@ const Details = () => {
     .map((lan) => lan)
     .join(", ");
 
+    // const borderCountry = borders.map( border => console.log(object))
+
   return (
-    <section className="mt-12 px-4 pb-11 max-w-[640px] md:max-w-[820px] lg:max-w-[1040px] mx-auto">
+    <section className="mt-12 px-6 max-w-[640px] md:max-w-[820px] lg:max-w-[1040px] mx-auto">
       <Link
         to="/"
         className="text-very-dark-blue-t bg-white inline-flex justify-center items-center py-2 px-7 shadow-md rounded-md border-gray-900 transition-all ease-in dark:bg-dark-blue dark:text-white"
@@ -50,47 +52,47 @@ const Details = () => {
       <FontAwesomeIcon icon={faSun} /> */}
 
       {countryRef && (
-        <div>
-          <div>
-            <img src={flag} alt={`${countryName} flag`} />
+        <div className="mt-12 flex gap-10 flex-col md:flex-row md:justify-between md:items-center md:mt-16">
+          <div class="w-full md:w-1/2">
+            <img className="w-full max-h-[350px] shadow-md rounded object-cover md:max-w-[550px]" src={flag} alt={`${countryName} flag`} />
           </div>
-          <div>
-            <div>
-              <h3>{countryName}</h3>
-              <div>
+          
+            <div className="w-full md:w-1/2 text-very-dark-blue-t transition-all ease-in dark:text-white">
+              <h3 className="font-bold text-lg">{countryName}</h3>
+              <div className="mt-4 flex flex-col gap-10 lg:justify-between">
                 <div>
-                  <ul>
+                  <ul className="font-semibold">
                     <li>
-                      Native Name: <span>{nativeName}</span>
+                      Native Name: <span className="text-gray-500">{nativeName}</span>
                     </li>
                     <li>
-                      Population: <span>{population}</span>
+                      Population: <span className="text-gray-500">{population}</span>
                     </li>
                     <li>
-                      Region: <span>{region}</span>{" "}
+                      Region: <span className="text-gray-500">{region}</span>
                     </li>
                     <li>
-                      Sub Region: <span>{subregion}</span>
+                      Sub Region: <span className="text-gray-500">{subregion}</span>
                     </li>
                     <li>
-                      Capital: <span>{capital}</span>
+                      Capital: <span className="text-gray-500">{capital}</span>
                     </li>
                   </ul>
                 </div>
                 <div>
-                  <ul>
+                  <ul className="font-semibold">
                     <li>
-                      Top Level Domain<span>{tld}</span>
+                      Top Level Domain<span className="text-gray-500">{tld}</span>
                     </li>
                     <li>Currencies: {currency}</li>
                     <li>
-                      Language: <span>{language}</span>
+                      Language: <span className="text-gray-500">{language}</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-          </div>
+          
         </div>
       )}
     </section>
