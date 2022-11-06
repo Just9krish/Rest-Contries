@@ -3,15 +3,23 @@ import useFetch from "../../Hooks/useFetch";
 import Country from "./Country";
 import Loader from "../Loader";
 
-const Countries = () => {
+const Countries = ({region}) => {
   let loadCountries = 12;
+
+  let url = "https://restcountries.com/v3.1/all"
+
+  if(region) {
+    url = `https://restcountries.com/v3.1/region/${region}`
+  } else {
+    url = "https://restcountries.com/v3.1/all"
+  }
 
   const [next, setNext] = useState(loadCountries);
   const {
     data: countries,
     error,
     isLoading,
-  } = useFetch("https://restcountries.com/v3.1/all");
+  } = useFetch(url);
 
   if (isLoading) return <Loader />;
 
