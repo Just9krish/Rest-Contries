@@ -30,7 +30,7 @@ const Countries = ({ region, keyword }) => {
   if (error) return <Error error={error}/>;
 
   if (countries?.length == 0) {
-    return <p className="dark:text-light mt-9">Country not found</p>;
+    return <p className="mt-16 text-center font-bold text-base md:text-xl lg:text-3xl text-very-dark-blue-t transition-all ease-in dark:text-white">Country not found</p>;
   }
 
   function loadMore() {
