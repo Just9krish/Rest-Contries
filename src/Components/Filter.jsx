@@ -31,8 +31,6 @@ const Filter = ({ selectedRegion, setSelectedRegion }) => {
       value: "oceania",
     },
   ];
-//   setSelectedRegion("")
-//   console.log(selectedRegion);
 
   function handleChange(e) {
     setSelectedRegion(e.target.value);
@@ -43,10 +41,12 @@ const Filter = ({ selectedRegion, setSelectedRegion }) => {
       onChange={handleChange}
       name="selectRegion"
       value={selectedRegion}
-      className="min-h-[50px] w-full max-w-sm apperance-none rounded bg-white text-very-dark-blue-t shadow-box dark:bg-dark-blue dark:text-white transition-all"
+      className="min-h-[50px] w-full max-w-sm pl-3 apperance-none rounded bg-white text-very-dark-blue-t shadow-box dark:bg-dark-blue dark:text-white transition-all"
     >
       {regions.map((option, index) => (
-        <option key={index} value={option.value}>{option.label}</option>
+        <option key={index} value={option.value}>
+          {option.label}
+        </option>
       ))}
     </select>
   );

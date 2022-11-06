@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <header className="flex items-center justify-between px-3 py-5 text-very-dark-blue-t bg-white shadow-navbar transition-all md:px-14 lg:px-16 dark:bg-dark-blue dark:text-white">
-      <h1 className="dark:text-red">Where in the world?</h1>
+      <h1 className="font-extrabold">Where in the world?</h1>
       <div className="relative">
         <button className="absolute flex items-center justify-center text-sm transition-all dark:opacity-0">
           <svg className="fill-current"

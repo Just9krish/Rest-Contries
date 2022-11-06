@@ -2,6 +2,7 @@ import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
 import Country from "./Country";
 import Loader from "../Loader";
+import Error from "../../Pages/Error"
 
 const Countries = ({ region, keyword }) => {
   let loadCountries = 12;
@@ -26,9 +27,9 @@ const Countries = ({ region, keyword }) => {
 
   if (isLoading) return <Loader />;
 
-  if (error) return <div>{error}</div>;
+  if (error) return <Error error={error}/>;
 
-  if (countries?.length === 0) {
+  if (countries?.length == 0) {
     return <p className="dark:text-light mt-9">Country not found</p>;
   }
 
@@ -39,7 +40,6 @@ const Countries = ({ region, keyword }) => {
   return (
     <>
       <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {/* <div className="flex flex-wrap -mx-1 mt-11 lg:-mx-4"> */}
         {countries?.slice(0, next)?.map((country, index) => (
           <Country key={index} country={country} />
         ))}
@@ -58,17 +58,6 @@ const Countries = ({ region, keyword }) => {
       )}
     </>
   );
-
-  // Back Up
-  // const { data: countries, error, isLoading } = useFetch("https://restcountries.com/v3.1/all")
-
-  // return (
-  //     <div className='mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-  //         {countries?.map((country, index) => (
-  //             <Country key={index} country={country} />
-  //         ))}
-  //     </div>
-  // );
 };
 
 export default Countries;

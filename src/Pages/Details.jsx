@@ -45,7 +45,7 @@ const Details = () => {
   ));
 
   return (
-    <section className="mt-12 px-6 max-w-[640px] md:max-w-[820px] lg:max-w-[1040px] mx-auto">
+    <section className="mt-12 px-6 pb-14 max-w-[640px] md:max-w-[820px] lg:max-w-[1040px] mx-auto">
       <Link
         to="/"
         className="text-very-dark-blue-t bg-white inline-flex justify-center items-center py-2 px-7 shadow-md rounded-md border-gray-900 transition-all ease-in dark:bg-dark-blue dark:text-white"
