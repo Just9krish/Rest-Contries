@@ -3,27 +3,30 @@ import useFetch from "../../Hooks/useFetch";
 import Country from "./Country";
 import Loader from "../Loader";
 
-const Countries = ({region}) => {
+const Countries = ({ region, keyword }) => {
   let loadCountries = 12;
 
-  let url = "https://restcountries.com/v3.1/all"
+  let url = "https://restcountries.com/v3.1/all";
 
-  if(region) {
-    url = `https://restcountries.com/v3.1/region/${region}`
+  if (region) {
+    url = `https://restcountries.com/v3.1/region/${region}`;
   } else {
-    url = "https://restcountries.com/v3.1/all"
+    url = "https://restcountries.com/v3.1/all";
   }
 
   const [next, setNext] = useState(loadCountries);
-  const {
-    data: countries,
-    error,
-    isLoading,
-  } = useFetch(url);
+  let { data: countries, error, isLoading } = useFetch(url);
+
+  if (keyword) {
+    countries = countries.filter((country) => {
+      const name = country.name.common;
+      return name.toLowerCase().includes(keyword.toLowerCase());
+    });
+  }
 
   if (isLoading) return <Loader />;
 
-  if(error) return <div>{error}</div>
+  if (error) return <div>{error}</div>;
 
   function loadMore() {
     setNext(next + loadCountries);

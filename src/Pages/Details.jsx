@@ -28,8 +28,8 @@ const Details = () => {
 
   const currencyArr = Object.values(currencies);
 
-  const currency = currencyArr.map((currency) => (
-    <span className="text-gray-500">
+  const currency = currencyArr.map((currency, idx) => (
+    <span key={idx} className="text-gray-500">
       {currency.name} ({currency.symbol}){currencyArr?.length > 1 ? ", " : null}
     </span>
   ));
