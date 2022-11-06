@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 
-const Search = ({ keyword, setKeyword }) => {
+const Search = ({ setKeyword }) => {
   let inputRef = useRef(null);
 
   const debounce = (func, waitTime) => {
@@ -21,7 +21,7 @@ const Search = ({ keyword, setKeyword }) => {
     setKeyword(inputValue);
   };
 
-  const debouncedChangeHadler = debounce(chageHandler, 2000);
+  const debouncedChangeHadler = debounce(chageHandler, 1000);
 
   return (
     <form className="w-full max-w-sm">
