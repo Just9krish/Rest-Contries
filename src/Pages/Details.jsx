@@ -36,12 +36,13 @@ const Details = () => {
     .join(", ");
 
   const borderCountry = borders?.map((border, idx) => (
-    <button
+    <Link
+      to="/country"
       key={idx}
       className="bg-slate-300 px-4 py-2 text-very-dark-blue-t rounded shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white"
     >
       {border}
-    </button>
+    </Link>
   ));
 
   return (
@@ -74,7 +75,7 @@ const Details = () => {
                     <span className="text-gray-500">{nativeName}</span>
                   </li>
                   <li>
-                    Population: {" "}
+                    Population:{" "}
                     <span className="text-gray-500">
                       {formatNumber(population)}
                     </span>
@@ -94,7 +95,8 @@ const Details = () => {
               <div>
                 <ul className="font-semibold">
                   <li>
-                    Top Level Domain: <span className="text-gray-500">{tld}</span>
+                    Top Level Domain:{" "}
+                    <span className="text-gray-500">{tld}</span>
                   </li>
                   <li>Currencies: {currency}</li>
                   <li>

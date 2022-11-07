@@ -2,20 +2,19 @@ import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
 import Country from "./Country";
 import Loader from "../Loader";
-import Error from "../../Pages/Error"
+import Error from "../../Pages/Error";
 
 const Countries = ({ region, keyword }) => {
   let loadCountries = 12;
+  const [next, setNext] = useState(loadCountries);
 
   let url = "https://restcountries.com/v3.1/all";
-
   if (region) {
     url = `https://restcountries.com/v3.1/region/${region}`;
   } else {
     url = "https://restcountries.com/v3.1/all";
   }
 
-  const [next, setNext] = useState(loadCountries);
   let { data: countries, error, isLoading } = useFetch(url);
 
   if (keyword) {
@@ -27,10 +26,14 @@ const Countries = ({ region, keyword }) => {
 
   if (isLoading) return <Loader />;
 
-  if (error) return <Error error={error}/>;
+  if (error) return <Error error={error} />;
 
   if (countries?.length == 0) {
-    return <p className="mt-16 text-center font-bold text-base md:text-xl lg:text-3xl text-very-dark-blue-t transition-all ease-in dark:text-white">Country not found</p>;
+    return (
+      <p className="mt-16 text-center font-bold text-base md:text-xl lg:text-3xl text-very-dark-blue-t transition-all ease-in dark:text-white">
+        Country not found
+      </p>
+    );
   }
 
   function loadMore() {
