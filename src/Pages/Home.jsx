@@ -7,10 +7,8 @@ const Home = () => {
   const [selectedRegion, setSelectedRegion] = useState("");
   const [keyword, setKeyword] = useState(null);
 
-  console.log(keyword);
-
   return (
-    <section className="mt-12 px-6 pb-11 max-w-[640px] md:max-w-[820px] lg:max-w-[1040px] mx-auto">
+    <section className="mt-12 px-6 pb-11 max-w-[640px] md:max-w-[820px] lg:max-w-[1140px] mx-auto">
       <div className="flex flex-col gap-8 md:justify-between md:flex-row">
         <Search keyword={keyword} setKeyword={setKeyword} />
         <Filter

@@ -6,6 +6,7 @@ import {
   faMoon,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import formatNumber from "../Utils/formatNumber";
 
 const Details = () => {
   const location = useLocation();
@@ -45,7 +46,7 @@ const Details = () => {
   ));
 
   return (
-    <section className="mt-12 px-6 pb-14 max-w-[640px] md:max-w-[820px] lg:max-w-[1040px] mx-auto">
+    <section className="mt-12 px-6 pb-14 max-w-[640px] md:max-w-[820px] lg:max-w-[1140px] mx-auto">
       <Link
         to="/"
         className="text-very-dark-blue-t bg-white inline-flex justify-center items-center py-2 px-7 shadow-md rounded-md border-gray-900 transition-all ease-in dark:bg-dark-blue dark:text-white"
@@ -68,7 +69,7 @@ const Details = () => {
 
           <div className="w-full md:w-1/2 text-very-dark-blue-t transition-all ease-in dark:text-white">
             <h3 className="font-bold text-lg">{countryName}</h3>
-            <div className="mt-4 flex flex-col gap-10 lg:justify-between">
+            <div className="mt-4 flex flex-col gap-10 lg:flex-row lg:justify-between">
               <div>
                 <ul className="font-semibold">
                   <li>
@@ -77,7 +78,7 @@ const Details = () => {
                   </li>
                   <li>
                     Population:{" "}
-                    <span className="text-gray-500">{population}</span>
+                    <span className="text-gray-500">{formatNumber(population)}</span>
                   </li>
                   <li>
                     Region: <span className="text-gray-500">{region}</span>

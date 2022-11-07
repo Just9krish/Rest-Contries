@@ -1,10 +1,19 @@
+import useDark from "../Hooks/useDark";
+
 export default function Header() {
+  const [colorTheme, setTheme] = useDark();
+
+  function toggleDarkMode() {
+    setTheme(colorTheme);
+  }
+
   return (
     <header className="flex items-center justify-between px-3 py-5 text-very-dark-blue-t bg-white shadow-navbar transition-all md:px-14 lg:px-16 dark:bg-dark-blue dark:text-white">
       <h1 className="font-extrabold">Where in the world?</h1>
-      <div className="relative">
+      <div onClick={toggleDarkMode} className="relative">
         <button className="absolute flex items-center justify-center text-sm transition-all dark:opacity-0">
-          <svg className="fill-current"
+          <svg
+            className="fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 384 512"
             width="20"
@@ -14,7 +23,8 @@ export default function Header() {
           Dark Mode
         </button>
         <button className="flex opacity-0 items-center justify-center text-sm transition-all dark:opacity-100">
-          <svg className="fill-current"
+          <svg
+            className="fill-current"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             width="20"
