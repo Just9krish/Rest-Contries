@@ -74,7 +74,7 @@ const Details = () => {
                     <span className="text-gray-500">{nativeName}</span>
                   </li>
                   <li>
-                    Population:{" "}
+                    Population: {" "}
                     <span className="text-gray-500">
                       {formatNumber(population)}
                     </span>
@@ -94,7 +94,7 @@ const Details = () => {
               <div>
                 <ul className="font-semibold">
                   <li>
-                    Top Level Domain<span className="text-gray-500">{tld}</span>
+                    Top Level Domain: <span className="text-gray-500">{tld}</span>
                   </li>
                   <li>Currencies: {currency}</li>
                   <li>
