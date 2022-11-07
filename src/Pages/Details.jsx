@@ -1,11 +1,7 @@
 import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSun,
-  faMoon,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import formatNumber from "../Utils/formatNumber";
 
 const Details = () => {
@@ -40,7 +36,10 @@ const Details = () => {
     .join(", ");
 
   const borderCountry = borders?.map((border, idx) => (
-    <button key={idx} className="bg-slate-300 px-4 py-2 text-very-dark-blue-t rounded shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white">
+    <button
+      key={idx}
+      className="bg-slate-300 px-4 py-2 text-very-dark-blue-t rounded shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white"
+    >
       {border}
     </button>
   ));
@@ -54,8 +53,6 @@ const Details = () => {
         <FontAwesomeIcon className="mr-2" icon={faChevronLeft} />
         Back
       </Link>
-      {/* <FontAwesomeIcon icon={faMoon} />
-      <FontAwesomeIcon icon={faSun} /> */}
 
       {countryRef && (
         <div className="mt-12 flex gap-10 flex-col md:flex-row md:justify-between md:items-center md:mt-16">
@@ -78,7 +75,9 @@ const Details = () => {
                   </li>
                   <li>
                     Population:{" "}
-                    <span className="text-gray-500">{formatNumber(population)}</span>
+                    <span className="text-gray-500">
+                      {formatNumber(population)}
+                    </span>
                   </li>
                   <li>
                     Region: <span className="text-gray-500">{region}</span>
