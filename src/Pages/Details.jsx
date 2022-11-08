@@ -43,8 +43,6 @@ const Details = () => {
     return borderName.name.common;
   });
 
-  console.log(borderCountriesName);
-
   const borderCountry = borders
     ? countries?.map((country) => {
         const borderCountry = borderCountriesName.map((border, idx) => {
