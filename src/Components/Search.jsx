@@ -21,7 +21,7 @@ const Search = ({ setKeyword }) => {
     setKeyword(inputValue);
   };
 
-  const debouncedChangeHadler = debounce(chageHandler, 1000);
+  const debouncedChangeHadler = debounce(chageHandler, 850);
 
   return (
     <form className="w-full max-w-sm">

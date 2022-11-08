@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
+import { useCountries } from "../../Context/useCountryContext";
 import Country from "./Country";
 import Loader from "../Loader";
 import Error from "../../Pages/Error";
@@ -8,20 +9,19 @@ const Countries = ({ region, keyword }) => {
   let loadCountries = 12;
   const [next, setNext] = useState(loadCountries);
 
-  let url = "https://restcountries.com/v3.1/all";
-  if (region) {
-    url = `https://restcountries.com/v3.1/region/${region}`;
-  } else {
-    url = "https://restcountries.com/v3.1/all";
-  }
-
-  let { data: countries, error, isLoading } = useFetch(url);
+  let { data: countries, error, isLoading } = useCountries();
 
   if (keyword) {
-    countries = countries.filter((country) => {
+    countries = countries?.filter((country) => {
       const name = country.name.common;
       return name.toLowerCase().includes(keyword.toLowerCase());
     });
+  }
+
+  if (region) {
+    countries = countries?.filter(
+      (country) => country.region.toLowerCase() == region
+    );
   }
 
   if (isLoading) return <Loader />;
