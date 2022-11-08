@@ -21,7 +21,7 @@ const Details = () => {
     borders,
   } = selectedCountry;
 
-  let { data: countries } = useCountries();
+  const { data: countries } = useCountries();
 
   const nativeName = Object.values(selectedCountry.name.nativeName)[0].common;
 
@@ -38,20 +38,20 @@ const Details = () => {
     .join(", ");
 
   // const borderCountriesName = borders?.map((border) => {
-  //   let borderName = countries?.find((country) => border == country.cca3);
+  //   borderName = countries?.find((country) => border == country.cca3);
   //   return borderName.name.common;
   // });
 
   let borderCountriesName = [];
 
-    borders?.forEach((border) => {
-        countries?.forEach((country) => {
-            if (border == country.cca3) {
-                borderCountriesName.push(country.name.common);
-                return;
-            }
-        });
+  borders?.forEach((border) => {
+    countries?.forEach((country) => {
+      if (border == country.cca3) {
+        borderCountriesName.push(country.name.common);
+        return;
+      }
     });
+  });
 
   const borderCountry = borders
     ? countries?.map((country) => {
