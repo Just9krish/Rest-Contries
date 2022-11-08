@@ -1,12 +1,13 @@
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import formatNumber from "../Utils/formatNumber";
+import { useCountries } from "../Context/useCountryContext";
 
 const Details = () => {
   const location = useLocation();
-  const countryRef = useRef(location.state);
+  const [selectedCountry, setSelectedCountry ]= useState(location.state);
   const {
     flags: { png: flag },
     name: { common: countryName },
@@ -18,9 +19,11 @@ const Details = () => {
     languages,
     tld,
     borders,
-  } = countryRef.current;
+  } = selectedCountry;
 
-  const nativeName = Object.values(countryRef.current.name.nativeName)[0]
+  let { data: countries } = useCountries();
+
+  const nativeName = Object.values(selectedCountry.name.nativeName)[0]
     .common;
 
   const currencyArr = Object.values(currencies);
@@ -35,15 +38,49 @@ const Details = () => {
     .map((lan) => lan)
     .join(", ");
 
-  const borderCountry = borders?.map((border, idx) => (
-    <Link
-      to="/country"
-      key={idx}
-      className="bg-slate-300 px-4 py-2 text-very-dark-blue-t rounded shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white"
-    >
-      {border}
-    </Link>
-  ));
+  const borderCountriesName = borders?.map((border) => {
+    let borderName = countries?.find((country) => border == country.cca3);
+    return borderName.name.common;
+  });
+
+  console.log(borderCountriesName);
+
+  const borderCountry = borders
+    ? countries?.map((country) => {
+        const borderCountry = borderCountriesName.map((border, idx) => {
+          if (border == country.name.common) {
+            return (
+              <Link
+                key={idx}
+                state={country}
+                to="/country"
+                className="bg-slate-300 px-4 py-2 text-very-dark-blue-t rounded shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white"
+              >
+                {border}
+              </Link>
+            );
+          }
+        });
+        return borderCountry;
+      })
+    : "No Border Countries";
+    
+    useEffect(() => {
+      // window.scrollTo(0, 0);
+      setSelectedCountry(location.state);
+  }, [borderCountry]);
+
+  // const borderCountry = borders?.map((border, idx) => {
+  //   return (
+  //     <Link
+  //       to="/country"
+  //       key={idx}
+  //       className="bg-slate-300 px-4 py-2 text-very-dark-blue-t rounded shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white"
+  //     >
+  //       {border}
+  //     </Link>
+  //   );
+  // });
 
   return (
     <section className="mt-12 px-6 pb-14 max-w-[640px] md:max-w-[820px] lg:max-w-[1140px] mx-auto">
@@ -55,7 +92,7 @@ const Details = () => {
         Back
       </Link>
 
-      {countryRef && (
+      {selectedCountry && (
         <div className="mt-12 flex gap-10 flex-col md:flex-row md:justify-between md:items-center md:mt-16">
           <div className="w-full md:w-1/2">
             <img
