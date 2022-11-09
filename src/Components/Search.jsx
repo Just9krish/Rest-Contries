@@ -20,8 +20,9 @@ const Search = ({ setKeyword }) => {
 
   const debouncedChangeHadler = debounce(chageHandler, 850);
 
+  
   return (
-    <form className="w-full max-w-sm">
+    <form className="w-full max-w-sm" onSubmit={(e) => e.preventDefault()}>
       <div className="relative min-h-[50px]">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
