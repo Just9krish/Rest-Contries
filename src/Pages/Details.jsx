@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { useCountries } from "../Context/useCountryContext";
 import formatNumber from "../Utils/formatNumber";
+import "../Components/style/buttons.css"
 
 const Details = () => {
   const location = useLocation();
@@ -62,7 +63,8 @@ const Details = () => {
                 key={idx}
                 state={country}
                 to="/country"
-                className="bg-slate-300 px-4 py-2 text-very-dark-blue-t rounded shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white"
+                className="bg-slate-200 px-4 py-2 text-very-dark-blue-t rounded hover:bg-slate-100
+                 shadow-md transition-all ease-in dark:bg-gray-600 dark:text-white dark:hover:bg-gray-700"
               >
                 {border}
               </Link>
@@ -82,9 +84,9 @@ const Details = () => {
     <section className="mt-12 px-6 pb-14 max-w-[640px] md:max-w-[820px] lg:max-w-[1140px] mx-auto">
       <Link
         to="/"
-        className="text-very-dark-blue-t bg-white inline-flex justify-center items-center py-2 px-7 shadow-md rounded-md border-gray-900 transition-all ease-in dark:bg-dark-blue dark:text-white"
+        className="hvr-icon-back text-very-dark-blue-t bg-white py-2 px-7 shadow-md rounded-md border-gray-900 transition-all ease-in dark:bg-dark-blue dark:text-white"
       >
-        <FontAwesomeIcon className="mr-2" icon={faChevronLeft} />
+        <FontAwesomeIcon className="hvr-icon mr-1" icon={faChevronLeft} />
         Back
       </Link>
 

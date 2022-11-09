@@ -1,9 +1,11 @@
 import { useState } from "react";
-import useFetch from "../../Hooks/useFetch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useCountries } from "../../Context/useCountryContext";
 import Country from "./Country";
 import Loader from "../Loader";
 import Error from "../../Pages/Error";
+import "../style/buttons.css";
 
 const Countries = ({ region, keyword }) => {
   let loadCountries = 12;
@@ -51,11 +53,13 @@ const Countries = ({ region, keyword }) => {
         <div className="w-full text-center py-8">
           <button
             onClick={loadMore}
-            className="border-0 background-none sm:w-auto px-5 py-3 uppercase 
-          rounded-lg text-sm sm:text-base text-white bg-indigo-500 hover:bg-indigo-400 
-          focus:outline-0 active:bg-indigo-600 shadow-box transform transition hover:-translate-y-0.5"
+            className="hvr-icon-hang uppercase text-sm sm:text-base bg-[#0071BC] text-white shadow-box rounded-md px-7 py-3 font-bold"
           >
             Load More
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              className="hvr-icon ml-2"
+            />
           </button>
         </div>
       )}
