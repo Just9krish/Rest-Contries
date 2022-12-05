@@ -12,7 +12,7 @@ const Filter = ({ selectedRegion, setSelectedRegion }) => {
 
     {
       label: "America",
-      value: "america",
+      value: "americas",
     },
 
     {
